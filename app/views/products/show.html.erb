@@ -1,0 +1,31 @@
+<h1>Products#show</h1>
+<h2>This is product id: <%= @product.id  %></h2>
+
+<% if @questions.length > 0 %>
+  <table class="table">
+    <tr>
+      <th>Question id</th>
+      <th>Question</th>
+      <th>Asked by</th>
+      <th>Asker's Id</th>
+    </tr>
+    <% @questions.each do |question|  %>
+    <tr>
+      <td>
+        <%= question.id  %>
+      </td>
+      <td>
+        <%= question.question_description  %>
+      </td>
+      <td>
+        <%= question.asker.first_name  %>
+      </td>
+      <td>
+        <%= question.asker.id  %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<%= link_to 'Ask a question', new_product_question_path(@product), class: 'btn btn-success btn-lg' %>
