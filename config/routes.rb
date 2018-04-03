@@ -1,15 +1,6 @@
 Rails.application.routes.draw do
-  get 'products/index'
 
-  get 'products/show'
-
-  get 'products/new'
-
-  get 'products/create'
-
-  get 'products/destroy'
-
-  get 'products/update'
+  resources :products
 
   devise_for :users
   root to: 'pages#home'
