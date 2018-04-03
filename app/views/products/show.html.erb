@@ -24,7 +24,11 @@
       </div>
       <div class="message-status">
         <p class="status declined">Question</p>
-        <p class="price"></p>
+        <p class="price">
+          <% if current_user == question.product.owner && question.answer_description.nil? %>
+            <%= link_to 'answer',edit_product_question_path(@product,question), class: 'btn btn-info btn-xs' %>
+          <% end %>
+        </p>
       </div>
     </div>
       <% if !question.answer_description.nil? %>
