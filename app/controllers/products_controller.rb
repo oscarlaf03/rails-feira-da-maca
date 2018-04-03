@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
 
   def show
     @questions = Question.where(product: @product)
+    authorize @questions
   end
 
   def new
