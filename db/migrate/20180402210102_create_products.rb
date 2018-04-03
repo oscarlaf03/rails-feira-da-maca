@@ -11,7 +11,8 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.string :category
       t.string :type
       t.string :version
-      t.references :user, foreign_key: true
+      t.integer :owner_id, foreign_key: true
+      t.integer :buyer_id, foreign_key: true
 
       t.timestamps
     end
