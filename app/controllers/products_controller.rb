@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
 
   def index
-    @products = current_user.products
+    @products = policy_scope(Product).where(owner: current_user)
   end
 
   def show
@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to root_path
+    redirect_to products_path
   end
 
   def update
@@ -53,5 +53,6 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+    authorize @product
   end
 end

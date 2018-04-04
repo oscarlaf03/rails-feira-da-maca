@@ -5,24 +5,19 @@ class ProductPolicy < ApplicationPolicy
     end
   end
 
-  def create?
-    true
-  end
-
   def show?
     true
   end
 
-  def show
-    scope.all
-  end
-
-  def scope
-    record.all
+  def create?
+    true
   end
 
   def update?
-    record.product.owner == user
+    record.owner == user
   end
 
+  def destroy?
+    record.owner == user
+  end
 end
