@@ -55,8 +55,9 @@
       <% end %>
     </div>
 
-    <h2>This is are the questions for product id: <%= @product.id  %> </h2>
     <% if @questions.length > 0 %>
+    <h2>This is are the questions for product id: <%= @product.id  %> </h2>
+
       <% @questions.each do |question|  %>
         <div class="message question">
           <img class="avatar-large" src="https://pbs.twimg.com/profile_images/929933611754708992/ioSgz49P_400x400.jpg">
