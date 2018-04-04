@@ -26,7 +26,6 @@ rand(30..40).times do
   a_product = Product.new
   a_product.price = rand(101..999)
   a_product.color = Faker::Color.color_name
-  a_product.status = "Available"
   a_product.description = Faker::Hacker.say_something_smart
   a_product.owner = users_array.sample
   a_product.model_code = Faker::Code.isbn
