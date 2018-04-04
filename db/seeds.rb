@@ -52,9 +52,23 @@ products_array.each do |product|
     puts "Question created for Product Id: #{a_product.id}\n Total questions created for this product:#{counter_questions}"
   end
 end
+puts 'Almost done'
+puts 'Creating internal users'
+oscar = User.new(first_name:'oscar',email:'oscar@teste.com',password:'123123')
+oscar.save
+thiago = User.new(first_name:'thiago',email:'thiago@teste.com',password:'123123')
+thiago.save
+andre = User.new(first_name:'andre',email:'andre@teste.com',password:'123123')
+andre.save
+Product.all[0].owner = oscar
+Product.all[0].update(owner: oscar)
+Product.all[1].owner = thiago
+Product.all[1].update(owner: thiago)
+Product.all[2].owner = andre
+Product.all[2].update(owner: andre)
+puts 'All tasks completed'
 puts '*************************************'
 puts 'Questions finalized'
-puts 'All tasks completed'
 puts '*************************************'
 puts '*************************************'
 puts 'SUMMARY'
