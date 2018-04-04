@@ -52,34 +52,64 @@
 
 
 
-<h2>This is product id: <%= @product.id  %></h2>
-
+<h2>This is are the questions for product id: <%= @product.id  %>
+<%= link_to 'Ask a question', new_product_question_path(@product), class: 'btn btn-success btn-lg' %>
+</h2>
 <% if @questions.length > 0 %>
-  <table class="table">
-    <tr>
-      <th>Question id</th>
-      <th>Question</th>
-      <th>Asked by</th>
-      <th>Asker's Id</th>
-    </tr>
-    <% @questions.each do |question|  %>
-    <tr>
-      <td>
-        <%= question.id  %>
-      </td>
-      <td>
-        <%= question.question_description  %>
-      </td>
-      <td>
-        <%= question.asker.first_name  %>
-      </td>
-      <td>
-        <%= question.asker.id  %>
-      </td>
-    </tr>
-    <% end %>
-  </table>
+  <% @questions.each do |question|  %>
+    <div class="message question">
+      <img class="avatar-large" src="https://pbs.twimg.com/profile_images/929933611754708992/ioSgz49P_400x400.jpg">
+      <div class="message-name">
+        <h3><%= question.asker.first_name %></h3>
+        <p><%= question.created_at %></p>
+      </div>
+      <div class="message-body">
+        <p>
+          <strong>
+            <%= question.question_description.split[0]%>
+            <%= question.question_description.split[1]%>
+          </strong>
+        </p>
+        <p>
+          <%= question.question_description %>
+        </p>
+      </div>
+      <div class="message-status">
+        <p class="status declined">Question</p>
+        <p class="price">
+          <% if current_user == question.product.owner && question.answer_description.nil? %>
+            <%= link_to 'answer',edit_product_question_path(@product,question), class: 'btn btn-info btn-xs' %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+      <% if !question.answer_description.nil? %>
+        <div class="message answer">
+          <img class="avatar-large" src="http://p.fod4.com/p/channels/qpztk/profile/ToJNnsiRhmm405cz7CPX_charlize-theron-head-shot.jpg">
+          <div class="message-name">
+            <h3><%= question.product.owner.first_name %></h3>
+            <p><%= question.updated_at %></p>
+          </div>
+          <div class="message-body">
+            <p>
+              <strong>
+                <%= question.answer_description.split[0]%>
+                <%= question.answer_description.split[1]%>
+              </strong>
+            </p>
+            <p>
+              <%= question.answer_description %>
+            </p>
+          </div>
+          <div class="message-status">
+            <p class="status accepted">Answer</p>
+            <p class="price"></p>
+          </div>
+        </div>
+      <% end %>
+  <% end %>
 <% end %>
+
 
 <div class="container">
   <%= link_to 'Ask a question', new_product_question_path(@product), class: 'btn btn-success btn-md' %>
