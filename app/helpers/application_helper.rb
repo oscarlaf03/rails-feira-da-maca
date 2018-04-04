@@ -1,11 +1,32 @@
 module ApplicationHelper
 
-  def question_count
-    current_user.questions.where(answer_description: nil).count
-  end
 
   def unanswered_questions
-     current_user.questions.where(answer_description: nil).all
+    @products = []
+    products = current_user.products
+    products.each do |product|
+      product.questions.each do |question|
+        if question.answer_description == nil
+          @products << product
+        end
+      end
+    end
+    @products.uniq
   end
 
-end
+
+  def question_count
+    @counter = 0
+    products = current_user.products
+    products.each do |product|
+      product.questions.each do |question|
+        if question.answer_description == nil
+          @counter += 1
+        end
+      end
+    end
+    @counter
+  end
+
+
+  end

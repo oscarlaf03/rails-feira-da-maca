@@ -13,17 +13,22 @@
     <%= link_to "Add Product", new_product_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "My Products", products_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
+    <% if question_count != 0 %>
     <div class="dropdown">
       <%= link_to "Questions (#{question_count})", products_path, class: "navbar-wagon-item navbar-wagon-link", "data-toggle" => "dropdown" %>
-
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <% unanswered_questions.each do |question| %>
+        <% unanswered_questions.each do |product| %>
         <li>
-          <%= link_to question.product.product_type, product_path(question.product_id), class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to product.product_type, product_path(product), class: "navbar-wagon-item navbar-wagon-link" %>
         </li>
         <% end %>
       </ul>
     </div>
+    <% else %>
+
+    <%= link_to "Questions (#{question_count})", products_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+    <% end %>
 
 
 
