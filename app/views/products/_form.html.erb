@@ -10,6 +10,8 @@
 <%= f.input :status, collection: %w(Available Unavaiable) %>
 <%= f.input :product_type %>
 <%= f.input :version %>
+<%= f.input :product_photo %>
+<%= f.input :product_photo_cache, as: :hidden %>
 <%= f.button :submit, {class: "btn btn-default"} %>
 <%= link_to "Cancel", :back, {class: "btn btn-default"} %>
 

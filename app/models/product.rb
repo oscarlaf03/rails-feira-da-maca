@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+    mount_uploader :product_photo, PhotoUploader
+
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
   belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id', optional: true
   validates :price, :status, :description, :category, :product_type, presence: true
