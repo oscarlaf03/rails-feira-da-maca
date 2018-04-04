@@ -22,7 +22,8 @@ class QuestionPolicy < ApplicationPolicy
   end
 
   def update?
-    record.product.owner == user
+    # record.product.owner == user && question.answer_description.nil?
+    true
   end
 
 end

@@ -1,15 +1,16 @@
 <h1><%= type %></h1>
 <%= simple_form_for [@product] do |f| %>
+<%= f.input :product_type, collection: %w(Phones Laptops Tablets iPods Acessories) %>
+<%= f.input :category, collection: ['iPhone','iPhone 3G','iPhone 3GS','iPhone 4','iPhone 4S',
+  'iPhone 5','iPhone 5C','iPhone 5S','iPhone 6 / 6 Plus','iPhone 6S / 6S Plus',
+  'iPhone SE','iPhone 7 / 7 Plus','iPhone 8 / 8 Plus','iPhone X' ] %>
+
+<%= f.input :description, as: :text %>
 <%= f.input :price %>
-<%= f.input :model_code %>
 <%= f.input :memory %>
 <%= f.input :color, collection: %w(Black Gray White Dark_Gray Pink) %>
-<%= f.input :photo %>
-<%= f.input :description %>
-<%= f.input :category, collection: %w(Phones Laptops Tablets iPods Acessories) %>
-<%= f.input :status, collection: %w(Available Unavaiable) %>
-<%= f.input :product_type %>
-<%= f.input :version %>
+<%= f.input :product_photo %>
+<%= f.input :product_photo_cache, as: :hidden %>
 <%= f.button :submit, {class: "btn btn-default"} %>
 <%= link_to "Cancel", :back, {class: "btn btn-default"} %>
 

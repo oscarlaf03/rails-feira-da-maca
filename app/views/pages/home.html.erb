@@ -10,6 +10,7 @@
        <p><%= product.price %></p>
        <p><%= product.model_code %></p>
        <%= link_to "View", product_path(product), class: "btn btn-primary" %>
+       <%= link_to "Buy", product_path(product), class: "btn btn-danger" %>
      </div>
    </div>
    <% end %>
