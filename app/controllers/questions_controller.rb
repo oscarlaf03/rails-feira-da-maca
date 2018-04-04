@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :set_product, only: [:create, :update, :new, :edit]
   before_action :set_user, only: [:create, :new,:edit, :update]
   before_action :set_question, only: [:edit ,:update]
+
   def new
     @question = Question.new
     authorize @question

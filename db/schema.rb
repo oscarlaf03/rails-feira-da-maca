@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20180402210334) do
     t.string "photo"
     t.string "description"
     t.string "category"
-    t.string "type"
+    t.string "product_type"
     t.string "version"
     t.integer "owner_id"
     t.integer "buyer_id"

@@ -16,22 +16,23 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.user = current_user
+    @product.owner = current_user
     if @product.save
-      redirect_to products_show_path(@product)
+      redirect_to product_path(@product)
     else
       render :new
     end
   end
 
   def destroy
-    @product.delete
-    redirect_to products_index
+    @product.destroy
+    redirect_to root_path
   end
 
   def update
+    @product.update(product_params)
     if @product.save
-      redirect_to products_show_path(@product)
+      redirect_to product_path(@product)
     else
       render :edit
     end

@@ -1,4 +1,56 @@
-<h1>Products#show</h1>
+<h1>Product Page</h1>
+
+<div class="wrapper">
+  <div class="container">
+    <table class="table table-striped">
+    <tr>
+      <th>price</th>
+      <th>model_code</th>
+      <th>memory</th>
+      <th>color</th>
+      <th>status</th>
+      <th>description</th>
+      <th>category</th>
+      <th>product_type</th>
+      <th>version</th>
+    </tr>
+    <tr>
+      <td>
+        <%= @product.price  %>
+      </td>
+      <td>
+        <%= @product.model_code  %>
+      </td>
+      <td>
+        <%= @product.memory  %>
+      </td>
+      <td>
+        <%= @product.color  %>
+      </td>
+      <td>
+        <%= @product.status  %>
+      </td>
+      <td>
+        <%= @product.description  %>
+      </td>
+      <td>
+        <%= @product.category  %>
+      </td>
+      <td>
+        <%= @product.product_type  %>
+      </td>
+      <td>
+        <%= @product.version  %>
+      </td>
+    </tr>
+  </table>
+  </div>
+</div>
+
+
+
+
+
 
 <h2>This is are the questions for product id: <%= @product.id  %>
 <%= link_to 'Ask a question', new_product_question_path(@product), class: 'btn btn-success btn-lg' %>
@@ -57,3 +109,13 @@
       <% end %>
   <% end %>
 <% end %>
+
+
+<div class="container">
+  <%= link_to 'Ask a question', new_product_question_path(@product), class: 'btn btn-success btn-md' %>
+
+  <%= link_to 'Edit Product', edit_product_path, class: "btn btn-default", class: 'btn btn-warning btn-md' %>
+
+  <%= link_to 'Delete Product', product_path(@product), method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-md' %>
+
+</div>
