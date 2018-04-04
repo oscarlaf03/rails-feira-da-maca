@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [ :show, :edit, :update, :destroy ]
+  skip_after_action :verify_policy_scoped, only: [ :index ]
+
 
   def index
     @products = policy_scope(Product).where(owner: current_user)
@@ -44,8 +46,8 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:price, :model, :memory, :color, :status,
-                                    :photo, :description, :category, :product_type,
-                                    :version, :owner_id, :buyer_id)
+      :photo, :description, :category, :product_type,
+      :version, :owner_id, :buyer_id)
   end
 
 
