@@ -9,6 +9,7 @@ gem 'rails', '5.1.5'
 gem 'redis'
 gem 'devise'
 gem 'pundit'
+gem 'faker'
 
 
 gem 'autoprefixer-rails'
