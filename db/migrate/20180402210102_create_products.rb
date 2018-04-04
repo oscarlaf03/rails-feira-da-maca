@@ -9,7 +9,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.string :photo
       t.string :description
       t.string :category
-      t.string :type
+      t.string :product_type
       t.string :version
       t.integer :owner_id, foreign_key: true
       t.integer :buyer_id, foreign_key: true

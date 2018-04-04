@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_product, only: [:create, :update, :new, :edit]
   before_action :set_user, only: [:create, :new]
+
   def new
     @question = Question.new
     @product = Product.find(params[:product_id])
