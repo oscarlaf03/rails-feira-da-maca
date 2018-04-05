@@ -1,0 +1,63 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+  <section style="height:80px;"></section>
+
+  <!----------- Footer ------------>
+  <footer class="footer-bs">
+    <div class="row">
+      <div class="col-md-3 footer-brand animated fadeInLeft">
+        <h2>Sobre nós</h2>
+        <p>A feira da maçã é um marketplace de produtos da Apple. Se você pretende comprar ou vender algum produto da Apple, você esta no lugar certo.</p>
+      </div>
+      <div class="col-md-4 footer-nav animated fadeInUp">
+        <h4>Categorias</h4>
+        <div class="col-md-6">
+          <ul class="pages">
+            <% categories.each do |category| %>
+            <li><%= link_to category %></li>
+            <% end %>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+          <ul class="list">
+
+            <%# if !user_signed_in? %>
+            <li><%#= link_to t(".sign_in", default: "Login"), new_user_session_path %></li>
+            <li><%#= link_to "Cadastre-se", new_registration_path(resource_name) %></li>
+            <li><%#= link_to "Esqueci a senha", new_password_path(resource_name) %></li>
+            <%# end %>
+
+            <li><a href="#">Fale conosco</a></li>
+            <li><a href="#">Termos de uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-2 footer-social animated fadeInDown">
+        <h4>Redes Sociais</h4>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">RSS</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 footer-ns animated fadeInRight">
+        <h4>Newsletter</h4>
+        <p>Fique por dentro das nossas promoções</p>
+        <p>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Insira seu e-mail...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
+            </span>
+          </div><!-- /input-group -->
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>

@@ -24,8 +24,8 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @question.update(check_questions_params)
-    if @question.save
+
+    if @question.update(check_questions_params)
       redirect_to product_path(@product)
     else
       render :new
