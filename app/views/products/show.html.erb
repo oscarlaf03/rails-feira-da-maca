@@ -1,98 +1,122 @@
+<% col = ' col-sm-12' %>
+<% col1 = ' col-sm-12 col-md-3' %>
+<% col2 = ' col-sm-12 col-md-8' %>
+<% col3 = ' col-sm-12 col-md-1' %>
+
+
+
 <div class="wrapper">
   <div class="container">
-    <h1>Product Page</h1>
+      <div class="row">
+          <h1><%= @product.description%></h1>
 
-    <% if !@product[:product_photo].nil? %>
-      <div class="product-photo">
-        <%= cl_image_tag @product.product_photo, height: 300, width: 400, crop: :fill %>
-      </div>
-    <% end %>
 
-    <table class="table table-striped">
-      <tr>
-        <th>price</th>
-        <th>model_code</th>
-        <th>memory</th>
-        <th>color</th>
-        <th>status</th>
-        <th>description</th>
-        <th>category</th>
-        <th>product_type</th>
-        <th>version</th>
-      </tr>
-      <tr>
-        <td>
-          <%= @product.price  %>
-        </td>
-        <td>
-          <%= @product.model_code  %>
-        </td>
-        <td>
-          <%= @product.memory  %>
-        </td>
-        <td>
-          <%= @product.color  %>
-        </td>
-        <td>
-          <%= @product.description  %>
-        </td>
-        <td>
-          <%= @product.category  %>
-        </td>
-        <td>
-          <%= @product.product_type  %>
-        </td>
-        <td>
-          <%= @product.version  %>
-        </td>
-      </tr>
-    </table>
-    <div class="button-container">
-      <%= link_to 'Ask a question', new_product_question_path(@product), class: 'btn btn-success btn-md' %>
-      <% if current_user == @product.owner %>
-        <%= link_to 'Edit Product', edit_product_path, class: "btn btn-default", class: 'btn btn-warning btn-md' %>
-        <%= link_to 'Delete Product', product_path(@product), method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-md' %>
-      <% end %>
-    </div>
+          <div class="banner-small" style="background-image:  url('../assets/<%=@product.photo%>');">
+            <div class="banner-content">
+            </div>
+          </div>
 
-    <h2>This is are the questions for product id: <%= @product.id  %> </h2>
-    <% if @questions.length > 0 %>
-      <% @questions.each do |question|  %>
-        <div class="message question">
-          <img class="avatar-large" src="https://pbs.twimg.com/profile_images/929933611754708992/ioSgz49P_400x400.jpg">
-          <div class="message-name">
-            <h3><%= question.asker.first_name %></h3>
-            <p><%= question.created_at %></p>
-          </div>
-          <div class="message-body">
-            <p>
-              <strong>
-                <%= question.question_description.split[0]%>
-                <%= question.question_description.split[1]%>
-              </strong>
-            </p>
-            <p>
-              <%= question.question_description %>
-            </p>
-          </div>
-          <div class="message-status">
-            <p class="status declined">Question</p>
-            <p class="price"></p>
-          </div>
+
+        <% if !@product[:product_photo].nil? %>
+        <div class="product-photo <%=col %>">
+          <%= cl_image_tag @product.product_photo, height: 300, width: 400, crop: :fill %>
         </div>
-        <% if current_user == question.product.owner && question.answer_description.nil? %>
-          <div class="answer-box">
-            <%= render partial: 'shared/form_answers', locals: { question: question} %>
+        <% end %>
+
+        <table class="table table-striped <%=col%>">
+          <tr>
+            <th>price</th>
+            <th>model_code</th>
+            <th>memory</th>
+            <th>color</th>
+            <th>status</th>
+            <th>description</th>
+            <th>category</th>
+            <th>product_type</th>
+            <th>version</th>
+          </tr>
+          <tr>
+            <td>
+              <%= @product.price  %>
+            </td>
+            <td>
+              <%= @product.model_code  %>
+            </td>
+            <td>
+              <%= @product.memory  %>
+            </td>
+            <td>
+              <%= @product.color  %>
+            </td>
+            <td>
+              <%= @product.description  %>
+            </td>
+            <td>
+              <%= @product.category  %>
+            </td>
+            <td>
+              <%= @product.product_type  %>
+            </td>
+            <td>
+              <%= @product.version  %>
+            </td>
+          </tr>
+        </table>
+        <div class="button-container<%=col%>">
+          <% if current_user == @product.owner %>
+          <%= link_to '<i class="fa fa-edit"></i> Edit'.html_safe, edit_product_path, class: "btn btn-default", class: 'btn btn-warning btn-md' %>
+          <%= link_to '<i class="fa fa-trash"></i> Trash'.html_safe, product_path(@product), method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-md' %>
+          <% end %>
+        </div>
+          <%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path, class: 'btn btn-primary btn-lg'  %>
+        <%if User.all.include?(current_user) %>
+          <h4>Contact the seller</h4>
+          <div class="question-box <%=col%>">
+            <%= render 'shared/form_questions' %>
           </div>
         <% end %>
-        <% if !question.answer_description.nil? %>
-          <div class="message answer">
+
+
+        <% if @questions.length > 0 %>
+        <h2>This is are the questions for product id: <%= @product.id  %> </h2>
+
+
+          <% @questions.reverse.each do |question|  %>
+          <div class="message question row">
+            <img class="avatar-large" src="https://pbs.twimg.com/profile_images/929933611754708992/ioSgz49P_400x400.jpg">
+            <div class="message-name <%=col1%>">
+              <h3><%= question.asker.first_name %></h3>
+              <p><%= question.created_at %></p>
+            </div>
+            <div class="message-body <%=col2%>">
+              <p>
+                <strong>
+                  <%= question.question_description.split[0]%>
+                  <%= question.question_description.split[1]%>
+                </strong>
+              </p>
+              <p>
+                <%= question.question_description %>
+              </p>
+            </div>
+            <div class="message-status <%=col3%>">
+              <p class="status declined">Question</p>
+              <p class="price"></p>
+            </div>
+          </div>
+          <% if current_user == question.product.owner && question.answer_description.nil? %>
+          <div class="answer-box row">
+            <%= render partial: 'shared/form_answers', locals: { question: question} %>
+          </div>
+          <% end %>
+          <% if !question.answer_description.nil? %>
+          <div class="message answer row">
             <img class="avatar-large" src="http://p.fod4.com/p/channels/qpztk/profile/ToJNnsiRhmm405cz7CPX_charlize-theron-head-shot.jpg">
-            <div class="message-name">
+            <div class="message-name <%=col1%>">
               <h3><%= question.product.owner.first_name %></h3>
               <p><%= question.updated_at %></p>
             </div>
-            <div class="message-body">
+            <div class="message-body <%=col2%>">
               <p>
                 <strong>
                   <%= question.answer_description.split[0]%>
@@ -103,14 +127,15 @@
                 <%= question.answer_description %>
               </p>
             </div>
-            <div class="message-status">
+            <div class="message-status <%=col3%>">
               <p class="status accepted">Answer</p>
               <p class="price"></p>
             </div>
           </div>
-        <% end %>
+          <% end %>
+          <% end %>
       <% end %>
-      <% end %>
+    </div>
   </div>
 </div>
 

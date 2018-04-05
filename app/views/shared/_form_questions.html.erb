@@ -1,6 +1,6 @@
 <%= simple_form_for [@product, @question] do |f| %>
-  <%= f.input :question_description %>
-  <%= f.submit %>
+  <%= f.input :question_description, label: false %>
+  <%= f.submit value: 'Ask Question', class: 'btn btn-warning btn-xs' %>
   <% end %>
 
 
