@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :products do
     resources :questions, only: [:new, :create,:edit,:update]
   end
+
+  get 'pages/:id', to: 'pages#sales', as: 'sales'
 end
