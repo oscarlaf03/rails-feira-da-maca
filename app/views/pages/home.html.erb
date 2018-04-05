@@ -1,18 +1,43 @@
-<h1>All products</h1>
+<h1>Choose your favorite</h1>
 
 <div class="container">
   <div class="row">
 
-    <% Product.all.each do |product| %>
+
+
+
+
+
+    <% Product.where(sold: false).each do |product| %>
+
+    <% if  product[:product_photo].nil? %>
     <div class="col-xs-12 col-sm-4">
-      <div class="card">
-       <p><%= product.id %></p>
-       <p><%= product.price %></p>
-       <p><%= product.model_code %></p>
-       <%= link_to "View", product_path(product), class: "btn btn-primary" %>
-       <%= link_to "Buy", product_path(product), class: "btn btn-danger" %>
-     </div>
-   </div>
-   <% end %>
- </div>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('../assets/<%=product.photo%>');">
+        <div class="card-category"><%= product.category %></div>
+        <div class="card-description">
+          <h2>$<%= product.price %></h2>
+          <p>color:<%= product.color%></p>
+
+
+          <%= link_to "<i class='fa fa-eye'></i> View".html_safe, product_path(product), class: "btn btn-primary" %>
+          <%= link_to "<i class='fa fa-shopping-cart'></i> Buy".html_safe, product_path(product), class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+    <% else %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path product.product_photo, height: 300, width: 400, crop: :fill %>');">
+        <div class="card-category"><%= product.category %></div>
+        <div class="card-description">
+          <h2>$<%= product.price %></h2>
+          <p>color:<%= product.color%></p>
+
+          <%= link_to "<i class='fa fa-eye'></i> View".html_safe, product_path(product), class: "btn btn-primary" %>
+          <%= link_to "<i class='fa fa-shopping-cart'></i> Buy".html_safe, product_path(product), class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
 </div>

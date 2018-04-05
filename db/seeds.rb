@@ -3,6 +3,22 @@ require 'faker'
 iphone_categories = ['iPhone','iPhone 3G','iPhone 3GS','iPhone 4','iPhone 4S',
   'iPhone 5','iPhone 5C','iPhone 5S','iPhone 6 / 6 Plus','iPhone 6S / 6S Plus',
   'iPhone SE','iPhone 7 / 7 Plus','iPhone 8 / 8 Plus','iPhone X' ]
+PHOTOS = {
+  'iPhone'=> 'iphone_geral.jpeg',
+  'iPhone 3G' => 'iphone3g.jpeg',
+  'iPhone 3GS' => 'iphone3gs.jpeg',
+  'iPhone 4' => 'iphone4.png',
+  'iPhone 4S' => 'iphone4s.jpeg',
+  'iPhone 5' => 'iphone5.jpg',
+  'iPhone 5C' => 'iphone5c.png',
+  'iPhone 5S' => 'iphone5s.jpeg',
+  'iPhone 6 / 6 Plus' => 'iphone6.jpeg',
+  'iPhone 6S / 6S Plus' => 'iphone6s.jpeg',
+  'iPhone SE' => 'iphonese.jpeg',
+  'iPhone 7 / 7 Plus' => 'iphone7.jpeg',
+  'iPhone 8 / 8 Plus' => 'iphone8.jpeg',
+  'iPhone X' => 'iphonex.jpeg'
+}
 
 puts 'creating users'
 counter_user = 0
@@ -33,6 +49,7 @@ rand(30..40).times do
   a_product.category = iphone_categories.sample
   a_product.version = Faker::Code.asin
   a_product.owner = users_array.sample
+  a_product.photo = PHOTOS[a_product.category]
   a_product.save
   products_array << a_product
   puts "Product #{a_product.category} created\nTotal products created:#{counter_product}"
