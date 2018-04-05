@@ -62,6 +62,7 @@
           </tr>
         </table>
         <div class="button-container<%=col%>">
+          <%= link_to "<i class='fa fa-shopping-cart'></i> Buy".html_safe, sales_path(@product), class: "btn btn-danger btn-lg" %>
           <% if current_user == @product.owner %>
           <%= link_to '<i class="fa fa-edit"></i> Edit'.html_safe, edit_product_path, class: "btn btn-default", class: 'btn btn-warning btn-md' %>
           <%= link_to '<i class="fa fa-trash"></i> Trash'.html_safe, product_path(@product), method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-md' %>

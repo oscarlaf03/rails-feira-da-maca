@@ -2,11 +2,11 @@
   <div class="banner-content">
     <h1>Feira da Maçã</h1>
     <p>Compra e Venda de produtos da Apple</p>
-    <a class="btn btn-primary btn-lg">Ver produtos</a>
+    <a href="#destaques" class="btn btn-primary btn-lg">Ver produtos</a>
   </div>
 </div>
 
-<h3>Últimos destaques</h3>
+<h1 id="destaques">Últimos destaques</h1>
 
 <div class="container">
   <div class="row">
@@ -26,7 +26,7 @@
 
 
           <%= link_to "<i class='fa fa-eye'></i> View".html_safe, product_path(product), class: "btn btn-primary" %>
-          <%= link_to "<i class='fa fa-shopping-cart'></i> Buy".html_safe, product_path(product), class: "btn btn-danger" %>
+          <%= link_to "<i class='fa fa-shopping-cart'></i> Buy".html_safe, sales_path(product), class: "btn btn-danger" %>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
           <p>color:<%= product.color%></p>
 
           <%= link_to "<i class='fa fa-eye'></i> View".html_safe, product_path(product), class: "btn btn-primary" %>
-          <%= link_to "<i class='fa fa-shopping-cart'></i> Buy".html_safe, product_path(product), class: "btn btn-danger" %>
+          <%= link_to "<i class='fa fa-shopping-cart'></i> Buy".html_safe, sales_path(product), class: "btn btn-danger" %>
         </div>
       </div>
     </div>
