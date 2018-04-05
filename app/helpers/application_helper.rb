@@ -29,4 +29,12 @@ module ApplicationHelper
   end
 
 
+  def categories
+    @categories = []
+    products = Product.all
+    products.each do |product|
+      @categories << product.product_type
+    end
+    @categories.uniq
   end
+end

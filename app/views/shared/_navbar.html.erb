@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-  <%= image_tag "logo_bitten.png", height: 50 %>
+  <%= image_tag "logo.png", height: 50 %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -13,14 +13,6 @@
       <%= link_to "Add Product", new_product_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "My Products", products_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-      <% if question_count != 0 %>
-        <div class="dropdown">
-          <%= link_to "Questions (#{question_count})", products_path, class: "navbar-wagon-item navbar-wagon-link", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <% unanswered_questions.each do |product| %>
-              <li>
-                <%= link_to product.product_type, product_path(product), class: "navbar-wagon-item navbar-wagon-link" %>
-              </li>
             <% end %>
 
           </ul>
