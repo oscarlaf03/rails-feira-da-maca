@@ -8,9 +8,11 @@
   <div class="container">
       <div class="row">
           <h1><%= @product.description%></h1>
+          <% path = cl_image_path "#{@product.photo}"  %>
 
 
-          <div class="banner-small" style="background-image:  url('../assets/<%=@product.photo%>');">
+
+          <div class="banner-small" style="background-image:  url('<%= path %>');">
             <div class="banner-content">
             </div>
           </div>
