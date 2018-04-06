@@ -1,57 +1,57 @@
-<
-
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://res.cloudinary.com/dsxbknylk/image/upload/v1522964912/background.jpg');">
-  <div class="banner-content">
-    <h1>Feira da Maçã</h1>
-    <p>Compra e Venda de produtos da Apple</p>
-    <a href="#destaques" class="btn btn-primary btn-lg">Ver produtos</a>
+  <div class="container-banner"><div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://res.cloudinary.com/dsxbknylk/image/upload/v1522964912/background.jpg');">
+    <div class="banner-content">
+      <h1>Feira da Maçã</h1>
+      <p>Compra e Venda de produtos da Apple</p>
+      <a href="#destaques" class="btn btn-primary btn-lg">Ver produtos</a>
+    </div>
   </div>
-</div>
 
-<h1 id="destaques">Últimos destaques</h1>
+
 
 <div class="container">
+
   <div class="row" id="products-container">
+  
+  <h3 id="destaques">Últimos destaques</h1>
+      <% @products.each do |product| %>
+      <% path = cl_image_path "#{product.photo}"  %>
+      <% if product[:product_photo].nil? %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= path %>');">
+          <div class="card-category">
 
-    <% @products.each do |product| %>
-    <% path = cl_image_path "#{product.photo}"  %>
-    <% if product[:product_photo].nil? %>
+          <%= link_to product.category, product_path(product), class: "text-card-category" %>
 
-    <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= path %>');">
-        <div class="card-category"><%= product.category %></div>
-        <div class="card-description">
-          <h2>$<%= product.price %></h2>
-          <p>color:<%= product.color%></p>
+          </div>
+          <div class="card-description">
+            <h2>$<%= product.price %>.00</h2>
+            <p>Cor:<%= product.color.capitalize%></p>
 
-          <%= link_to "<i class='fa fa-eye'></i> View".html_safe, product_path(product), class: "btn btn-primary" %>
-          <%= link_to "<i class='fa fa-shopping-cart'></i> Buy".html_safe, sales_path(product), class: "btn btn-danger" %>
+
+            <%= link_to "<i class='fa fa-shopping-cart'></i> Comprar".html_safe, sales_path(product), class: "btn btn-danger" %>
+          </div>
         </div>
       </div>
-    </div>
+      <% else %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path product.product_photo, height: 300, width: 400, crop: :fill %>');">
+          <div class="card-category"><%= product.category %></div>
+          <div class="card-description">
+            <h2>$<%= product.price %></h2>
+            <p>Cor:<%= product.color%></p>
 
-    <% else %>
+            <%= link_to "<i class='fa fa-eye'></i> Ver produto".html_safe, product_path(product), class: "btn btn-primary" %>
+            <%= link_to "<i class='fa fa-shopping-cart'></i> Comprar".html_safe, sales_path(product), class: "btn btn-danger" %>
+          </div>
 
-    <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path product.product_photo, height: 300, width: 400, crop: :fill %>');">
-        <div class="card-category"><%= product.category %></div>
-        <div class="card-description">
-          <h2>$<%= product.price %></h2>
-          <p>color:<%= product.color%></p>
-
-          <%= link_to "<i class='fa fa-eye'></i> View".html_safe, product_path(product), class: "btn btn-primary" %>
-          <%= link_to "<i class='fa fa-shopping-cart'></i> Buy".html_safe, sales_path(product), class: "btn btn-danger" %>
         </div>
       </div>
+      <% end %>
+      <% end %>
     </div>
-    <% end %>
-    <% end %>
-  </div>
-
-
-  <div class="more-prod">
+    
+   <div class="more-prod">
     <%= link_to "More Products", load_more_path, class: "subscribe btn btn-info btn-lg btn-block more-button", remote: true %>
    </div>
-
-
-</div>
+ 
+  </div>
