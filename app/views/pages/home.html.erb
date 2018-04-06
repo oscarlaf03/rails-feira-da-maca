@@ -9,9 +9,11 @@
 
 
 <div class="container">
+
+  <div class="row" id="products-container">
+  
   <h3 id="destaques">Últimos destaques</h1>
-    <div class="row">
-      <% Product.where(sold: false).each do |product| %>
+      <% @products.each do |product| %>
       <% path = cl_image_path "#{product.photo}"  %>
       <% if product[:product_photo].nil? %>
       <div class="col-xs-12 col-sm-4">
@@ -41,9 +43,15 @@
             <%= link_to "<i class='fa fa-eye'></i> Ver produto".html_safe, product_path(product), class: "btn btn-primary" %>
             <%= link_to "<i class='fa fa-shopping-cart'></i> Comprar".html_safe, sales_path(product), class: "btn btn-danger" %>
           </div>
+
         </div>
       </div>
       <% end %>
       <% end %>
     </div>
+    
+   <div class="more-prod">
+    <%= link_to "More Products", load_more_path, class: "subscribe btn btn-info btn-lg btn-block more-button", remote: true %>
+   </div>
+ 
   </div>
