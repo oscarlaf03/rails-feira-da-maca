@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   end
 
   get 'pages/:id', to: 'pages#sales', as: 'sales'
+
+  get '/load_more', to: 'pages#load_more'
+
 end
