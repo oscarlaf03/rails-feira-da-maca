@@ -2,7 +2,7 @@
     <div class="banner-content">
       <h1>Feira da Maçã</h1>
       <p>Compra e Venda de produtos da Apple</p>
-      <a href="#destaques" class="btn btn-primary btn-lg">Ver produtos</a>
+      <%= link_to "Ver todos produtos", home_products_path, class: "btn btn-primary btn-lg" %>
     </div>
   </div>
 
@@ -49,8 +49,5 @@
       <% end %>
       <% end %>
   </div>
-  <div class="more-prod">
-    <%= link_to "More Products", load_more_path, class: "subscribe btn btn-info btn-lg btn-block more-button", remote: true %>
-   </div>
 
 </div>

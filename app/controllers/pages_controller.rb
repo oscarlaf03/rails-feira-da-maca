@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @products = Product.limit(9)
+    @products = Product.limit(6)
   end
 
   def sales
@@ -8,6 +8,10 @@ class PagesController < ApplicationController
   end
 
   def home_products
+    @products = Product.where(sold: false).limit(6)
+    if params[:product_type]
+      @products = @products.where(product_type: params[:product_type])
+    end
   end
 
   def load_more
