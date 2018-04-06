@@ -1,7 +1,6 @@
-<%= simple_form_for([@product, question ], remote: true) do |f| %>
+<%= simple_form_for([@product, question ]) do |f| %>
   <%= f.input :answer_description, label: false %>
   <%= f.submit value: 'Answer', class: 'btn btn-danger btn-xs' %>
   <% end %>
-
 
 

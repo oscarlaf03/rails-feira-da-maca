@@ -77,68 +77,69 @@
           <%= render 'shared/form_questions', product: @product, question: @question %>
         </div>
       <% end %>
+      <div id="questions">
+
+        <% if @questions.length > 0 %>
+          <h2>This is are the questions for product id: <%= @product.id  %> </h2>
 
 
-      <% if @questions.length > 0 %>
-        <h2>This is are the questions for product id: <%= @product.id  %> </h2>
-
-
-        <% @questions.reverse.each do |question|  %>
-          <div class="questions-container" id='questions'>
-            <div class="message question row" >
-              <img class="avatar-large" src="https://pbs.twimg.com/profile_images/929933611754708992/ioSgz49P_400x400.jpg">
-              <div class="message-name <%=col1%>">
-                <h3><%= question.asker.first_name %></h3>
-                <p><%= question.created_at %></p>
-              </div>
-              <div class="message-body <%=col2%>">
-                <p>
-                  <strong>
-                    <%= question.question_description.split[0]%>
-                    <%= question.question_description.split[1]%>
-                  </strong>
-                </p>
-                <p>
-                  <%= question.question_description %>
-                </p>
-              </div>
-              <div class="message-status <%=col3%>">
-                <p class="status declined">Question</p>
-                <p class="price"></p>
-              </div>
-            </div>
-            <% if current_user == question.product.owner && question.answer_description.nil? %>
-              <div class="answer-box row">
-                <%= render partial: 'shared/form_answers', locals: { question: question} %>
-              </div>
-            <% end %>
-            <% if !question.answer_description.nil? %>
-              <div class="message answer row">
-                <img class="avatar-large" src="http://p.fod4.com/p/channels/qpztk/profile/ToJNnsiRhmm405cz7CPX_charlize-theron-head-shot.jpg">
+          <div class="questions-container"'>
+            <% @questions.reverse.each do |question|  %>
+              <div class="message question row" >
+                <img class="avatar-large" src="https://pbs.twimg.com/profile_images/929933611754708992/ioSgz49P_400x400.jpg">
                 <div class="message-name <%=col1%>">
-                  <h3><%= question.product.owner.first_name %></h3>
-                  <p><%= question.updated_at %></p>
+                  <h3><%= question.asker.first_name %></h3>
+                  <p><%= question.created_at %></p>
                 </div>
                 <div class="message-body <%=col2%>">
                   <p>
                     <strong>
-                      <%= question.answer_description.split[0]%>
-                      <%= question.answer_description.split[1]%>
+                      <%= question.question_description.split[0]%>
+                      <%= question.question_description.split[1]%>
                     </strong>
                   </p>
                   <p>
-                    <%= question.answer_description %>
+                    <%= question.question_description %>
                   </p>
                 </div>
                 <div class="message-status <%=col3%>">
-                  <p class="status accepted">Answer</p>
+                  <p class="status declined">Question</p>
                   <p class="price"></p>
                 </div>
               </div>
+              <% if current_user == question.product.owner && question.answer_description.nil? %>
+                <div class="answer-box row">
+                  <%= render partial: 'shared/form_answers', locals: { question: question} %>
+                </div>
+              <% end %>
+              <% if !question.answer_description.nil? %>
+                <div class="message answer row">
+                  <img class="avatar-large" src="http://p.fod4.com/p/channels/qpztk/profile/ToJNnsiRhmm405cz7CPX_charlize-theron-head-shot.jpg">
+                  <div class="message-name <%=col1%>">
+                    <h3><%= question.product.owner.first_name %></h3>
+                    <p><%= question.updated_at %></p>
+                  </div>
+                  <div class="message-body <%=col2%>">
+                    <p>
+                      <strong>
+                        <%= question.answer_description.split[0]%>
+                        <%= question.answer_description.split[1]%>
+                      </strong>
+                    </p>
+                    <p>
+                      <%= question.answer_description %>
+                    </p>
+                  </div>
+                  <div class="message-status <%=col3%>">
+                    <p class="status accepted">Answer</p>
+                    <p class="price"></p>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
           </div>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
