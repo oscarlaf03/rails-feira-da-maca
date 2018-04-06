@@ -1,8 +1,14 @@
-<% col = ' col-sm-12' %>
-<% col1 = ' col-sm-12 col-md-3' %>
-<% col2 = ' col-sm-12 col-md-8' %>
-<% col3 = ' col-sm-12 col-md-1' %>
+<div class="container">
+  <% col = ' col-sm-12' %>
+  <% col1 = ' col-sm-12 col-md-3' %>
+  <% col2 = ' col-sm-12 col-md-8' %>
+  <% col3 = ' col-sm-12 col-md-1' %>
 
+<%  if current_user[:user_photo].nil? %>
+  <% user_image_path = 'https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png' %>
+  <% else %>
+  <% user_image_path = cl_image_path "#{current_user.user_photo}" %>
+<% end %>
 
 <div class="wrapper">
   <div class="container">
@@ -68,6 +74,7 @@
         <% if current_user == @product.owner %>
         <%= link_to '<i class="fa fa-edit"></i> Edit'.html_safe, edit_product_path, class: "btn btn-default", class: 'btn btn-warning btn-md' %>
         <%= link_to '<i class="fa fa-trash"></i> Trash'.html_safe, product_path(@product), method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-md' %>
+
         <% end %>
       </div>
       <%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path, class: 'btn btn-primary btn-lg'  %>
@@ -81,7 +88,6 @@
 
         <% if @questions.length > 0 %>
           <h2>This is are the questions for product id: <%= @product.id  %> </h2>
-
 
           <div class="questions-container"'>
             <% @questions.reverse.each do |question|  %>
@@ -142,5 +148,5 @@
       </div>
     </div>
   </div>
-</div>
 
+</div>

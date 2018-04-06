@@ -1,3 +1,4 @@
+<div class="container">
 <h1><%= type %></h1>
 <%= simple_form_for([@product]) do |f| %>
 <%= f.input :product_type, collection: %w(Phones Laptops Tablets iPods Acessories) %>
@@ -15,3 +16,4 @@
   <%= link_to "Cancel", :back, {class: "btn btn-default"} %>
 
 <% end %>
+</div>

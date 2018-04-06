@@ -26,6 +26,19 @@
   font-size: 15px;
   text-transform: uppercase;
 }
+
+.text-card-category {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  background-color: white;
+  padding: 5px;
+  border-radius: 3px;
+  &:hover{
+  text-decoration:none;
+  }
+}
+
 .card-description {
   position: absolute;
   bottom: 10px;
