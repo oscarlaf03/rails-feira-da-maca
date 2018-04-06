@@ -3,6 +3,12 @@
 <% col2 = ' col-sm-12 col-md-8' %>
 <% col3 = ' col-sm-12 col-md-1' %>
 
+<%  if current_user[:user_photo].nil? %>
+  <% user_image_path = 'https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png' %>
+  <% else %>
+  <% user_image_path = cl_image_path "#{current_user.user_photo}" %>
+<% end %>
+
 
 <div class="wrapper">
   <div class="container">
@@ -85,7 +91,7 @@
 
           <% @questions.reverse.each do |question|  %>
           <div class="message question row">
-            <img class="avatar-large" src="https://pbs.twimg.com/profile_images/929933611754708992/ioSgz49P_400x400.jpg">
+            <img class="avatar-large" src="<%= user_image_path  %>">
             <div class="message-name <%=col1%>">
               <h3><%= question.asker.first_name %></h3>
               <p><%= question.created_at %></p>
@@ -113,7 +119,7 @@
           <% end %>
           <% if !question.answer_description.nil? %>
           <div class="message answer row">
-            <img class="avatar-large" src="http://p.fod4.com/p/channels/qpztk/profile/ToJNnsiRhmm405cz7CPX_charlize-theron-head-shot.jpg">
+            <img class="avatar-large" src="<%= user_image_path  %>">
             <div class="message-name <%=col1%>">
               <h3><%= question.product.owner.first_name %></h3>
               <p><%= question.updated_at %></p>
