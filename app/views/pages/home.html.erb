@@ -13,39 +13,40 @@
 <div class="container">
   <div class="row" id="products-container">
 
-    <% @products.each do |product| %>
-    <% path = cl_image_path "#{product.photo}"  %>
-    <% if product[:product_photo].nil? %>
+<% @products.each do |product| %>
+      <% path = cl_image_path "#{product.photo}"  %>
+      <% if product[:product_photo].nil? %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= path %>');">
+          <div class="card-category">
 
-    <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= path %>');">
-        <div class="card-category"><%= product.category %></div>
-        <div class="card-description">
-          <h2>$<%= product.price %></h2>
-          <p>color:<%= product.color%></p>
+          <%= link_to product.category, product_path(product), class: "text-card-category" %>
 
-          <%= link_to "<i class='fa fa-eye'></i> View".html_safe, product_path(product), class: "btn btn-primary" %>
-          <%= link_to "<i class='fa fa-shopping-cart'></i> Buy".html_safe, sales_path(product), class: "btn btn-danger" %>
+          </div>
+          <div class="card-description">
+            <h2>$<%= product.price %>.00</h2>
+            <p>Cor:<%= product.color.capitalize%></p>
+
+
+            <%= link_to "<i class='fa fa-shopping-cart'></i> Comprar".html_safe, sales_path(product), class: "btn btn-danger" %>
+          </div>
         </div>
       </div>
-    </div>
+      <% else %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path product.product_photo, height: 300, width: 400, crop: :fill %>');">
+          <div class="card-category"><%= product.category %></div>
+          <div class="card-description">
+            <h2>$<%= product.price %></h2>
+            <p>Cor:<%= product.color%></p>
 
-    <% else %>
-
-    <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path product.product_photo, height: 300, width: 400, crop: :fill %>');">
-        <div class="card-category"><%= product.category %></div>
-        <div class="card-description">
-          <h2>$<%= product.price %></h2>
-          <p>color:<%= product.color%></p>
-
-          <%= link_to "<i class='fa fa-eye'></i> View".html_safe, product_path(product), class: "btn btn-primary" %>
-          <%= link_to "<i class='fa fa-shopping-cart'></i> Buy".html_safe, sales_path(product), class: "btn btn-danger" %>
+            <%= link_to "<i class='fa fa-eye'></i> Ver produto".html_safe, product_path(product), class: "btn btn-primary" %>
+            <%= link_to "<i class='fa fa-shopping-cart'></i> Comprar".html_safe, sales_path(product), class: "btn btn-danger" %>
+          </div>
         </div>
       </div>
-    </div>
-    <% end %>
-    <% end %>
+      <% end %>
+      <% end %>
   </div>
 
 
@@ -55,3 +56,4 @@
 
 
 </div>
+
