@@ -82,12 +82,11 @@
 
             <div class="row">
               <div class="col-xs-12" id="button-container">
-
                 <button type="button" class="subscribe btn btn-success btn-lg btn-block buy" data-toggle="modal"
-                data-target="#exampleModalCenter"><span>
+                id="sweet-alert-demo"><span>
                 Buy Now</span>
-              </button>
-
+                </button>
+                <%= link_to "Buy Now Link", root_path, class: 'subscribe btn btn-success btn-lg btn-block buy', id: 'sweet-alert-demo', data: {confirm: "Congratulations \n Your Product is being shiped"} %>
             </div>
           </div>
         </form>
@@ -95,23 +94,6 @@
     </div>
   </div>
 </div>
-
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        <h2>Compra efetuada com sucesso</h2>
-        <p>Sua compra será enviada para o seu endereço</p>
-        <p></p>
-        <p> </p>
-        <p>Cheers</p>
-        <%= link_to "Back to Home", root_path, class: "btn btn-success" %>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 
 <div class="wrap">
   <div class="container">
