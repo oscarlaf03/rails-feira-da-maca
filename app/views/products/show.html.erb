@@ -74,7 +74,7 @@
       <%if User.all.include?(current_user) %>
         <h4>Contact the seller</h4>
         <div class="question-box <%=col%>">
-          <%= render 'shared/form_questions' %>
+          <%= render 'shared/form_questions', product: @product, question: @question %>
         </div>
       <% end %>
 

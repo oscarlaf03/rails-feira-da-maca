@@ -1,4 +1,4 @@
-<%= simple_form_for([@product, @question], remote: true) do |f| %>
+<%= simple_form_for([product, question], remote: true) do |f| %>
   <%= f.input :question_description, label: false %>
   <%= f.submit value: 'Ask Question', class: 'btn btn-warning btn-xs' %>
 <% end %>
