@@ -5,12 +5,14 @@
   <% col3 = ' col-sm-12 col-md-1' %>
 
 
-    <% if user_signed_in? %>
-<%  if current_user[:user_photo].nil? %>
-  <% user_image_path = 'https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png' %>
+<% if user_signed_in? %>
+  <%  if current_user[:user_photo].nil? %>
+    <% user_image_path = 'https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png' %>
   <% else %>
-  <% user_image_path = cl_image_path "#{current_user.user_photo}" %>
-<% end %>
+    <% user_image_path = cl_image_path "#{current_user.user_photo}" %>
+  <% end %>
+  <% else %>
+    <% user_image_path = 'https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png' %>
 <% end %>
 
 
@@ -84,22 +86,24 @@
 
         <% end %>
       </div>
-      <%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path, class: 'btn btn-primary btn-lg'  %>
       <%if User.all.include?(current_user) %>
         <h4>Contact the seller</h4>
         <div class="question-box <%=col%>">
           <%= render 'shared/form_questions', product: @product, question: @question %>
         </div>
       <% end %>
+      <% if @questions.length > 0 %>
+          <h2>This is are the questions for product id: <%= @product.id  %> </h2>
+          <% end %>
       <div id="questions">
 
         <% if @questions.length > 0 %>
-          <h2>This is are the questions for product id: <%= @product.id  %> </h2>
+
 
           <div class="questions-container"'>
             <% @questions.reverse.each do |question|  %>
               <div class="message question row" >
-                <img class="avatar-large" src="https://pbs.twimg.com/profile_images/929933611754708992/ioSgz49P_400x400.jpg">
+                <img class="avatar-large" src="<%=user_image_path %>">
                 <div class="message-name <%=col1%>">
                   <h3><%= question.asker.first_name %></h3>
                   <p><%= question.created_at %></p>
@@ -127,7 +131,7 @@
               <% end %>
               <% if !question.answer_description.nil? %>
                 <div class="message answer row">
-                  <img class="avatar-large" src="http://p.fod4.com/p/channels/qpztk/profile/ToJNnsiRhmm405cz7CPX_charlize-theron-head-shot.jpg">
+                  <img class="avatar-large" src="<%=user_image_path %>">
                   <div class="message-name <%=col1%>">
                     <h3><%= question.product.owner.first_name %></h3>
                     <p><%= question.updated_at %></p>

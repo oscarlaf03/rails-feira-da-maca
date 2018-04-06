@@ -86,7 +86,6 @@
                 id="sweet-alert-demo"><span>
                 Buy Now</span>
                 </button>
-                <%= link_to "Buy Now Link", root_path, class: 'subscribe btn btn-success btn-lg btn-block buy', id: 'sweet-alert-demo', data: {confirm: "Congratulations \n Your Product is being shiped"} %>
             </div>
           </div>
         </form>
@@ -104,11 +103,9 @@
       <th>Preço</th>
       <th>Modelo</th>
       <th>Espaço</th>
-      <th>Cor</th>
       <th>Descrição</th>
       <th>Categoria</th>
       <th>Tipo</th>
-      <th>Versão</th>
     </tr>
     <tr>
       <td>
@@ -121,9 +118,6 @@
         <%= @product.memory  %>
       </td>
       <td>
-        <%= @product.color  %>
-      </td>
-      <td>
         <%= @product.description  %>
       </td>
       <td>
@@ -132,9 +126,7 @@
       <td>
         <%= @product.product_type  %>
       </td>
-      <td>
-        <%= @product.version  %>
-      </td>
+
     </tr>
   </table>
 </div>
