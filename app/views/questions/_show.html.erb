@@ -1,0 +1,30 @@
+
+<% col = ' col-sm-12' %>
+<% col1 = ' col-sm-12 col-md-3' %>
+<% col2 = ' col-sm-12 col-md-8' %>
+<% col3 = ' col-sm-12 col-md-1' %>
+
+
+<div class="message question row" >
+  <img class="avatar-large" src="https://pbs.twimg.com/profile_images/929933611754708992/ioSgz49P_400x400.jpg">
+  <div class="message-name <%=col1%>">
+    <h3><%= question.asker.first_name %></h3>
+    <p><%= question.created_at %></p>
+  </div>
+  <div class="message-body <%=col2%>">
+    <p>
+      <strong>
+        <%= question.question_description.split[0]%>
+        <%= question.question_description.split[1]%>
+      </strong>
+    </p>
+    <p>
+      <%= question.question_description %>
+    </p>
+  </div>
+  <div class="message-status <%=col3%>">
+    <p class="status declined">Question</p>
+    <p class="price"></p>
+  </div>
+</div>
+
