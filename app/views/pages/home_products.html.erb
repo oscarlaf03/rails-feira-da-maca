@@ -9,6 +9,7 @@
         <h1>Produtos</h1>
         <p>Aqui você encontra o produto ideal para você</p>
       </div> -->
+      <h1>Produtos</h1>
       <div class="row">
         <% Product.where(sold: false).each do |product| %>
         <% path = cl_image_path "#{product.photo}"  %>
