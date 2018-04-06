@@ -6,4 +6,7 @@ class PagesController < ApplicationController
   def sales
     @product = Product.find(params[:id])
   end
+
+  def home_products
+  end
 end

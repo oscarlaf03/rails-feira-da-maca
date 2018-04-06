@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   end
 
   get 'pages/:id', to: 'pages#sales', as: 'sales'
+  get 'home_products', to: 'pages#home_products', as: 'home_products'
 end
