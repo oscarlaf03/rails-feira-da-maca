@@ -22,8 +22,8 @@
 
             <% if !user_signed_in? %>
             <li><%= link_to t(".sign_in", default: "Login"), new_user_session_path %></li>
-            <li><%= link_to "Cadastre-se", new_registration_path(resource_name) %></li>
-            <li><%= link_to "Esqueci a senha", new_password_path(resource_name) %></li>
+            <li><%= link_to "Cadastre-se", new_user_registration_path %></li>
+            <li><%= link_to "Esqueci a senha", new_user_password_path %></li>
             <% end %>
 
             <li><a href="#">Fale conosco</a></li>
