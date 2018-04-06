@@ -1,7 +1,8 @@
-<% col = ' col-sm-12' %>
-<% col1 = ' col-sm-12 col-md-3' %>
-<% col2 = ' col-sm-12 col-md-8' %>
-<% col3 = ' col-sm-12 col-md-1' %>
+<div class="container">
+  <% col = ' col-sm-12' %>
+  <% col1 = ' col-sm-12 col-md-3' %>
+  <% col2 = ' col-sm-12 col-md-8' %>
+  <% col3 = ' col-sm-12 col-md-1' %>
 
 <%  if current_user[:user_photo].nil? %>
   <% user_image_path = 'https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/user.png' %>
@@ -10,18 +11,18 @@
 <% end %>
 
 
-<div class="wrapper">
-  <div class="container">
+  <div class="wrapper">
+    <div class="container">
       <div class="row">
-          <h1><%= @product.description%></h1>
-          <% path = cl_image_path "#{@product.photo}"  %>
+        <h1><%= @product.description%></h1>
+        <% path = cl_image_path "#{@product.photo}"  %>
 
 
 
-          <div class="banner-small" style="background-image:  url('<%= path %>');">
-            <div class="banner-content">
-            </div>
+        <div class="banner-small" style="background-image:  url('<%= path %>');">
+          <div class="banner-content">
           </div>
+        </div>
 
 
         <% if !@product[:product_photo].nil? %>
@@ -76,12 +77,11 @@
           <%= link_to '<i class="fa fa-trash"></i> Trash'.html_safe, product_path(@product), method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-md' %>
           <% end %>
         </div>
-
         <%if User.all.include?(current_user) %>
-          <h4>Contact the seller</h4>
-          <div class="question-box <%=col%>">
-            <%= render 'shared/form_questions' %>
-          </div>
+        <h4>Contact the seller</h4>
+        <div class="question-box <%=col%>">
+          <%= render 'shared/form_questions' %>
+        </div>
         <% end %>
 
 
@@ -111,10 +111,18 @@
               <p class="status declined">Question</p>
               <p class="price"></p>
             </div>
+
           </div>
-          <% if current_user == question.product.owner && question.answer_description.nil? %>
-          <div class="answer-box row">
-            <%= render partial: 'shared/form_answers', locals: { question: question} %>
+          <div class="message-body <%=col2%>">
+            <p>
+              <strong>
+                <%= question.question_description.split[0]%>
+                <%= question.question_description.split[1]%>
+              </strong>
+            </p>
+            <p>
+              <%= question.question_description %>
+            </p>
           </div>
           <% end %>
           <% if !question.answer_description.nil? %>
@@ -139,11 +147,42 @@
               <p class="status accepted">Answer</p>
               <p class="price"></p>
             </div>
+
           </div>
-          <% end %>
-          <% end %>
-      <% end %>
+        </div>
+        <% if current_user == question.product.owner && question.answer_description.nil? %>
+        <div class="answer-box row">
+          <%= render partial: 'shared/form_answers', locals: { question: question} %>
+        </div>
+        <% end %>
+        <% if !question.answer_description.nil? %>
+        <div class="message answer row">
+          <img class="avatar-large" src="http://p.fod4.com/p/channels/qpztk/profile/ToJNnsiRhmm405cz7CPX_charlize-theron-head-shot.jpg">
+          <div class="message-name <%=col1%>">
+            <h3><%= question.product.owner.first_name %></h3>
+            <p><%= question.updated_at %></p>
+          </div>
+          <div class="message-body <%=col2%>">
+            <p>
+              <strong>
+                <%= question.answer_description.split[0]%>
+                <%= question.answer_description.split[1]%>
+              </strong>
+            </p>
+            <p>
+              <%= question.answer_description %>
+            </p>
+          </div>
+          <div class="message-status <%=col3%>">
+            <p class="status accepted">Answer</p>
+            <p class="price"></p>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
+</div>
