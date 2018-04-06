@@ -7,6 +7,9 @@ class PagesController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def home_products
+  end
+
   def load_more
     @products = Product.limit(9)
     respond_to do |format|
