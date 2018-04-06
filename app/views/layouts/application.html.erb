@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Feira da Maca é aqui</title>
+  <title>Feira da Maçã | Seminovos da Apple</title>
   <!-- Google result description-->
-  <meta name="description" content="Compre produtos apple original seminovos 100% originaís">
-  <meta property="og:title" content="Feira da Maça é a loja online de produtos apple seminovos">
+  <meta name="description" content="Compre produtos Apple seminovos 100% originais">
+  <meta property="og:title" content="Feira da Maçã é a loja online de produtos Apple seminovos">
   <meta property="og:image" content="http://res.cloudinary.com/dsxbknylk/image/upload/v1522967521/foto-card.png">
-  <meta property="og:description" content="Aqui você podera comprar e vender aquele produto apple que deseja a um ótimo preço">
+  <meta property="og:description" content="Aqui você encontra aquele produto Apple que tanto deseja por um preço ótimo.">
   <meta property="og:site_name" content="feira da maça"/>
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
@@ -29,14 +29,10 @@
   <%= render 'shared/navbar' %>
 </header>
 <body>
-  <div class="wrapper">
     <%= render 'shared/flashes' %>
-    <div class="container">
       <%= yield %>
       <%= javascript_include_tag 'application' %>
       <%= javascript_pack_tag 'application' %>
-    </div>
-  </div>
   <footer>
     <%= render 'shared/footer' %>
   </footer>

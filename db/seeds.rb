@@ -68,6 +68,10 @@ products_array.each do |product|
     puts "Question created for Product Id: #{a_product.id}\n Total questions created for this product:#{counter_questions}"
   end
 end
+
+
+
+
 puts 'Almost done'
 puts 'Creating internal users'
 oscar = User.new(first_name:'oscar',email:'oscar@teste.com',password:'123123')
@@ -82,6 +86,19 @@ Product.all[1].owner = thiago
 Product.all[1].update(owner: thiago)
 Product.all[2].owner = andre
 Product.all[2].update(owner: andre)
+
+oscar.products.each do |product|
+  12.times do
+    counter_questions += 1
+    a_question = Question.new
+    a_question.question_description = "#{Faker::Simpsons.quote}?"
+    a_question.asker = users_array.sample
+    a_question.product = product
+    a_question.save
+    puts "Question created for Product Id: #{a_product.id}\n Total questions created for this product:#{counter_questions}"
+  end
+end
+
 puts 'All tasks completed'
 puts '*************************************'
 puts 'Questions finalized'

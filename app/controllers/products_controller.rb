@@ -12,9 +12,6 @@ class ProductsController < ApplicationController
     authorize @questions
     @question = Question.new
     authorize @question
-
-
-
   end
 
   def new
@@ -28,7 +25,7 @@ class ProductsController < ApplicationController
     @product.owner = current_user
     set_standard_photo(@product)
     if @product.save
-      redirect_to product_path(@product)
+      redirect_to products_path
     else
       render :new
     end
@@ -40,8 +37,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product.update(product_params)
-    if @product.save
+    if @product.update(product_params)
       redirect_to product_path(@product)
     else
       render :edit

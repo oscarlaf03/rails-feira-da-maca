@@ -6,4 +6,5 @@ class Product < ApplicationRecord
   belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id', optional: true
   has_many :questions, dependent: :destroy
   has_many :askers, through: :questions
+  validates :product_type, :category, :description, :price, :memory, :color, presence: true
 end
