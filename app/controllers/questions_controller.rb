@@ -14,9 +14,15 @@ class QuestionsController < ApplicationController
     @question.asker = @user
     @question.product = @product
     if @question.save
-      redirect_to product_path(@product)
+      respond_to  do |format|
+        format.html {redirect_to product_path(@product)}
+        format.js
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'shared/form_questions'}
+        format.js
+      end
     end
   end
 
