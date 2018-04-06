@@ -1,0 +1,25 @@
+
+
+function refreshForm(innerHTML) {
+  const newForm = document.getElementById('new_question');
+  newForm.innerHTML = innerHTML;
+
+}
+
+function addQuestion(reviewHTML) {
+  const questions = document.getElementById('questions');
+  questions.insertAdjacentHTML('afterbegin', reviewHTML);
+}
+
+<% if @question.errors.any? %>
+  refreshForm('<%= j render "shared/form_questions", product: @product, question: @question %>');
+
+<% else %>
+  addQuestion('<%= j render "questions/show", question: @question %>');
+  refreshForm('<%= j render "shared/form_questions", product: @product, question: Question.new %>');
+  console.log('after Refresh form');
+
+
+<% end %>
+
+
